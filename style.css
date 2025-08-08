@@ -1,0 +1,115 @@
+
+:root {
+    --dark-bg: #030712;
+    --dark-text: #f3f4f6;
+    --light-bg: #f9fafb;
+    --light-text: #111827;
+    --primary-color: #4f46e5;
+    --secondary-color: #06b6d4;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 1000ms, color 1000ms;
+}
+
+.dark body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.light body {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Custom cursor styling */
+#custom-cursor {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9999;
+}
+
+/* Show cursor when over a link or button */
+.magnetic:hover ~ #custom-cursor,
+button:hover ~ #custom-cursor,
+a:hover ~ #custom-cursor {
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Hero section background animation */
+@keyframes gradient-animate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.gradient-background {
+    background: linear-gradient(240deg, #1e3a8a, #4f46e5, #083344, #06b6d4);
+    background-size: 400% 400%;
+    animation: gradient-animate 15s ease infinite;
+}
+
+/* Timeline item animations */
+.timeline-item-left.animate-in {
+    animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.timeline-item-right.animate-in {
+    animation: slide-in-right 0.8s ease-out forwards;
+}
+
+@keyframes slide-in-left {
+    from { transform: translateX(-100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+    from { transform: translateX(100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Service card animations */
+.service-card.animate-in {
+    animation: fade-in-up 0.6s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Form input floating labels */
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group input:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label {
+    top: -1.5rem;
+    font-size: 0.875rem; /* text-sm */
+    color: var(--secondary-color);
+}
+
+/* Sticky header effect */
+.scrolled {
+    background-color: rgba(3, 7, 18, 0.8); /* a bit darker when scrolled */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+#marquee {
+  animation: marquee 30s linear infinite;
+}
