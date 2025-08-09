@@ -13,12 +13,12 @@ body {
     transition: background-color 1000ms, color 1000ms;
 }
 
-.dark body {
+body.dark {
     background-color: var(--dark-bg);
     color: var(--dark-text);
 }
 
-.light body {
+body.light {
     background-color: var(--light-bg);
     color: var(--light-text);
 }
